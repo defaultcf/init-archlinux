@@ -37,8 +37,10 @@ EOF
 
 #theme
 su - vagrant -c 'sh <<SHELL
-yaourt -S --noconfirm gtk-theme-arc-git
+yaourt -S --noconfirm gtk-theme-arc-git arc-icon-theme-git
 export $(dbus-launch)
+xfconf-query -c xfwm4 -p /general/theme -n -s "Arc-Dark"
 xfconf-query -c xsettings -p /Net/ThemeName -s "Arc"
-xfconf-query -c xfwm4 -p /general/theme -s "Arc-Dark"
+xfconf-query -c xsettings -p /Net/IconThemeName -s "Arc"
+xfconf-query -c xfce4-desktop -p /desktop-icons/style -s 0
 SHELL'
