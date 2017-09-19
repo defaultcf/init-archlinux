@@ -44,3 +44,8 @@ xfconf-query -c xsettings -p /Net/ThemeName -s "Arc"
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Arc"
 xfconf-query -c xfce4-desktop -p /desktop-icons/style -n -t int -s 0
 SHELL'
+
+#Install nord.theme
+mkdir -p $HOME/.local/share/xfce4/terminal/colorschemes
+curl https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/develop/src/nord.theme \
+    -O $HOME/.local/share/xfce4/terminal/colorschemes/
