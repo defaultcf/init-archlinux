@@ -53,6 +53,9 @@ SHELL'
 
 #Install nord.theme
 su - vagrant -c 'sh <<SHELL
+mkdir -p $HOME/.config/xfce4/terminal
+curl -s https://gist.githubusercontent.com/i544c/87f63b31fd905448e8c3005e577d50a8/raw/da0ac3f86373475485cd898c113edda4dd99f8b6/terminalrc \
+    -o $HOME/.config/xfce4/terminal/terminalrc
 mkdir -p $HOME/.local/share/xfce4/terminal/colorschemes
 curl -s https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/develop/src/nord.theme \
     -o $HOME/.local/share/xfce4/terminal/colorschemes/nord.theme
