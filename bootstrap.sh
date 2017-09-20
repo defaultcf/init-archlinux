@@ -4,7 +4,7 @@ pacman -Syu --noconfirm \
     xorg-server xorg-apps xorg-xinit xf86-video-vesa \
     xfce4 xfce4-goodies \
     lightdm lightdm-gtk-greeter \
-    vim zsh tmux
+    vim zsh tmux xsel
 
 echo -e 'y\n\n' | pacman -S virtualbox-guest-utils #conflict
 
@@ -47,6 +47,8 @@ xfconf-query -c xfwm4 -p /general/theme -n -t string -s "Arc-Dark"
 xfconf-query -c xsettings -p /Net/ThemeName -s "Arc"
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Arc"
 xfconf-query -c xfce4-desktop -p /desktop-icons/style -n -t int -s 0
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/blank-on-ac -s 0
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/dpms-enabled -s false
 SHELL'
 
 #Install nord.theme
