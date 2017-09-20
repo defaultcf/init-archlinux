@@ -3,7 +3,8 @@ pacman -Syu --noconfirm \
     base-devel \
     xorg-server xorg-apps xorg-xinit xf86-video-vesa \
     xfce4 xfce4-goodies \
-    lightdm lightdm-gtk-greeter
+    lightdm lightdm-gtk-greeter \
+    vim zsh tmux
 
 echo -e 'y\n\n' | pacman -S virtualbox-guest-utils #conflict
 
@@ -46,6 +47,13 @@ xfconf-query -c xfce4-desktop -p /desktop-icons/style -n -t int -s 0
 SHELL'
 
 #Install nord.theme
+su - vagrant -c 'sh <<SHELL
 mkdir -p $HOME/.local/share/xfce4/terminal/colorschemes
-curl https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/develop/src/nord.theme \
-    -O $HOME/.local/share/xfce4/terminal/colorschemes/
+curl -s https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/develop/src/nord.theme \
+    -o $HOME/.local/share/xfce4/terminal/colorschemes/nord.theme
+git clone https://github.com/zplug/zplug $HOME/.zplug
+git clone https://github.com/i544c/dotfiles $HOME/dotfiles
+cd $HOME/dotfiles && make deploy
+SHELL'
+
+chsh -s `which zsh` vagrant
