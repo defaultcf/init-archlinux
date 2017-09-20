@@ -8,6 +8,9 @@ pacman -Syu --noconfirm \
 
 echo -e 'y\n\n' | pacman -S virtualbox-guest-utils #conflict
 
+groupadd autologin
+gpasswd -a vagrant autologin
+sed -ie 's/^#autologin-user=$/autologin-user=vagrant/' /etc/lightdm/lightdm.conf
 systemctl enable lightdm
 
 
