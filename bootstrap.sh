@@ -43,6 +43,7 @@ EOF
 su - vagrant -c 'sh <<SHELL
 yaourt -S --noconfirm gtk-theme-arc-git arc-icon-theme-git
 export $(dbus-launch)
+xfconf-query -c xfwm4 -p /general/button_layout -s "O|HMC"
 xfconf-query -c xfwm4 -p /general/theme -n -t string -s "Arc-Dark"
 xfconf-query -c xsettings -p /Net/ThemeName -s "Arc"
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Arc"
@@ -65,3 +66,7 @@ cd $HOME/dotfiles && make deploy
 SHELL'
 
 chsh -s `which zsh` vagrant
+
+sudo ln -s /usr/share/git/diff-highlight/diff-highlight /usr/local/bin/
+
+echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf
